@@ -6,36 +6,6 @@ import pandas as pd
 import pdb
 
 
-def calc_gain(ll, d):
-    """ Gain of a dish telescope
-    ll = wavelength (lambda)
-    d = dish diameter (m)
-    """
-    return (np.pi * d / ll)**2
-
-def calc_standard_metric():
-    #---------------------------
-    # Standardizing the sensitivity of telescopes by figuring out the max EIRP of a transmitter they could have found.
-    # For this, I need the sensitivity of the observation, given SEFD and so on.
-
-    #Standard distance (100 ly)
-    dist_std = (100. * u.lyr.to('m'))
-    #So decided not to use the distance above, it does makes sense if the original distance is shorter, but not if the distance is farther away (like in Siemion2013)
-
-
-    #nomalization to L_AO = 2e13 W, fraq_freq = 1/2 and N_stars = 1k
-    zeta_AO  =  1 #np.log10(1e3*.5)/ np.log10(2e13)
-    zeta_AO  =  1e3*0.5/ 1e13
-
-def calc_Tsky(v):
-
-    c = 2.998e8  #speed of light
-    l = c / v
-    T0 = 60   # in K
-
-    Tsky = T0 * l**2.55
-
-    return Tsky
 
 class Telescope:
 
@@ -64,6 +34,25 @@ class Telescope:
 
         return np.pi * (self.diameter/2.)**2
 
+    def calc_gain(self,ll, d):
+        """ Gain of a dish telescope
+        ll = wavelength (lambda)
+        d = dish diameter (m)
+        """
+
+        return (np.pi * d / ll)**2
+
+    def calc_Tsky_low_freq(self,v):
+        ''' Tsky calculation at low frequencies ().
+        '''
+
+        c = 2.998e8  #speed of light
+        l = c / v
+        T0 = 60   # in K
+        Tsky = T0 * l**2.55
+
+        return Tsky
+
 
 class SETI_project:
 
@@ -87,6 +76,21 @@ class SETI_project:
         self.distance = self.init_distance(distance)
 
         self.N_stars_perBeam = None
+
+
+    def calc_standard_metric(self,):
+        #---------------------------
+        # Standardizing the sensitivity of telescopes by figuring out the max EIRP of a transmitter they could have found.
+        # For this, I need the sensitivity of the observation, given SEFD and so on.
+
+        #Standard distance (100 ly)
+        dist_std = (100. * u.lyr.to('m'))
+        #So decided not to use the distance above, it does makes sense if the original distance is shorter, but not if the distance is farther away (like in Siemion2013)
+
+
+        #nomalization to L_AO = 2e13 W, fraq_freq = 1/2 and N_stars = 1k
+        zeta_AO  =  1 #np.log10(1e3*.5)/ np.log10(2e13)
+        zeta_AO  =  1e3*0.5/ 1e13
 
 
     def init_distance(self,distance,pc=True):
