@@ -2,29 +2,34 @@ from ET_power_law import *
 
 import matplotlib.pylab as plt
 
+
+#---------------------------
+# Edit values below  vvvvvv
 #---------------------------
 # Your new values ( e.g. Enriquez 2017)
 
-project = 'This project'
-telescope = 'GBT'
-N_stars = 692 *100
-band = 660e6 #Hz
-central_freq = 1.5e9 #Hz
+project = 'This project'  #Project name
+telescope = 'GBT'     # Telescope name
+N_stars = 692 *100    # Estimated number of stars
+band = 660e6      # Total bandwidth [Hz]
+central_freq = 1.5e9 # Central bandwidth [Hz]
 
-dish_diam = 100  #meters
-dish_Tsys = 20  #K
-dish_app_eff = 0.72  #Apperture Efficiency
+dish_diam = 100  #Telescope diameter meters (single dish in current version)
+dish_Tsys = 20  #Telescope Tsys [Kelvin]
+dish_app_eff = 0.72  #Telescope Apperture Efficiency
 
-SNR_threshold =  25 # sigma above the mean
-spectral_resolution = 3. # Hz
-scan_obs_time = 300 # sec
-max_distance = 50  # ly
+SNR_threshold =  25 #Survey threshold   [sigma above the mean]
+spectral_resolution = 3. #Spectral resolution [Hz]
+scan_obs_time = 300 # Observation time per scan [sec]
+max_distance = 50  #Maximum distance  [Ly]
 
-iband = 800e6  # Hz  Instantaneous Bandwidth
+iband = 800e6  #Instantaneous Bandwidth [Hz]
 
-shape = '*'
-color = 'red'
+shape = '*'    # Figure shape
+color = 'red'  # Figure color
 
+#---------------------------
+# Edit values above  ^^^^^
 #---------------------------
 #Calculating limits
 
