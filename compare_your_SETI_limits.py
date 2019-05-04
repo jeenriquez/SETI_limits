@@ -6,7 +6,7 @@ import matplotlib.pylab as plt
 #---------------------------
 # Edit values below  vvvvvv
 #---------------------------
-# Your new values ( e.g. Enriquez 2017)
+# Your new values ( e.g. Enriquez 2017  x 100)
 
 project = 'This project'  #Project name
 telescope = 'GBT'     # Telescope name
@@ -25,8 +25,8 @@ max_distance = 50  #Maximum distance  [Ly]
 
 iband = 800e6  #Instantaneous Bandwidth [Hz]
 
-shape = '*'    # Figure shape
-color = 'red'  # Figure color
+shape = 'D'    # Figure shape
+color = 'k'  # Figure color
 
 #---------------------------
 # Edit values above  ^^^^^

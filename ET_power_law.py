@@ -577,7 +577,7 @@ def compare_SETI_limits(EIRP,rarity,shape='o',color='k',project='This Project'):
     ET_power_law()
     plt.legend(numpoints=1,scatterpoints=1,fancybox=True, shadow=True)
 
-    plt.savefig('compare_SETI_limits.png', format='png',bbox_inches='tight')
+    plt.savefig('SETI_limits_comparison.png', format='png',bbox_inches='tight')
 #     plt.savefig('Transmitter_Rarity_FoM.pdf', format='pdf', dpi=300,bbox_inches='tight')
 
 
