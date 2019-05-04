@@ -553,17 +553,7 @@ def ET_power_law(verbose=False):
     plt.plot([np.log10(Tarter_EIRP)],[np.log10(1./Tarter_rarity)],'vc',color ='#1f9e89',markeredgecolor='w',markersize = markersize,label='Tarter (1980)')
     plt.plot(np.log10(Verschuur_EIRP),np.log10(1./Verschuur_rarity),'sm',color ='#efda21',markeredgecolor='w',markersize = markersize,label='Verschuur (1973)')
 
-    plt.xlabel('EIRP [log(W)]',fontsize = fontsize)
-    #plt.ylabel('Transmiter Galactic Rarity [log((Nstars*BW)^-1)]',fontsize=fontsize)
-    #plt.ylabel('Transmitter Rate \n [log(1/(Nstars * rel_BW))]',fontsize=fontsize)
-    plt.ylabel('Transmitter Rate ',fontsize=fontsize)
-
-    plt.xticks(fontsize = ticksize)
-    plt.yticks(fontsize = ticksize)
-    plt.ylim(-10,4)
-    plt.xlim(10,23)
-
-def compare_SETI_limits(EIRP,rarity,shape='o',color='k',project='This Project'):
+def compare_SETI_limits(EIRP,rarity,shape='o',color='k',project='This Project',y_label_units=True):
     ''' Compare SETI project with previus surveys.
     '''
 
@@ -571,11 +561,29 @@ def compare_SETI_limits(EIRP,rarity,shape='o',color='k',project='This Project'):
     # plotting setup
     plt.ion()
     plt.figure(figsize=(15, 10))
+    alpha = 0.7
     markersize = 20
+    fontsize = 20
+    ticksize = fontsize - 2
+    dot_size = markersize - 12
 
     plt.plot([np.log10(EIRP)],[np.log10(1./rarity)],shape, color = color,markersize = markersize, label=project)
     ET_power_law()
     plt.legend(numpoints=1,scatterpoints=1,fancybox=True, shadow=True)
+
+
+    plt.xlabel('EIRP [log(W)]',fontsize = fontsize)
+    #plt.ylabel('Transmiter Galactic Rarity [log((Nstars*BW)^-1)]',fontsize=fontsize)
+
+    if y_label_units:
+        plt.ylabel('Transmitter Rate \n [log(1/(Nstars * rel_BW))]',fontsize=fontsize)
+    else:
+       plt.ylabel('Transmitter Rate ',fontsize=fontsize)
+
+    plt.xticks(fontsize = ticksize)
+    plt.yticks(fontsize = ticksize)
+    plt.ylim(-10,4)
+    plt.xlim(10,23)
 
     plt.savefig('SETI_limits_comparison.png', format='png',bbox_inches='tight')
 #     plt.savefig('Transmitter_Rarity_FoM.pdf', format='pdf', dpi=300,bbox_inches='tight')

@@ -27,6 +27,7 @@ iband = 800e6  #Instantaneous Bandwidth [Hz]
 
 shape = 'D'    # Figure shape
 color = 'k'  # Figure color
+y_label_units = True  # Units in Y label
 
 #---------------------------
 # Edit values above  ^^^^^
@@ -64,5 +65,5 @@ print_project()
 #---------------------------
 #Comparing SETI limits
 
-compare_SETI_limits(EIRP,survey_rarity,shape=shape,color=color,project=project)
+compare_SETI_limits(EIRP,survey_rarity,shape=shape,color=color,project=project,y_label_units=y_label_units)
 
