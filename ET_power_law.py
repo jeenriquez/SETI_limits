@@ -510,22 +510,18 @@ def ET_power_law(verbose=False):
         print '~o~'
 
     #---------------------------------------------------------------------------------
-    # plotting setup
-    plt.ion()
-
     #EIRP values in watts.
     P = np.array([1e10,1e12,1e14,1e16,1e18,1e20,1e23])
 
     #---------------------------
-    # Luminosity function, of putative transmitters.
-
-    plt.figure(figsize=(15, 10))
-    alpha = 0.7
+    # Luminosity function limit on putative transmitters.
     plt.plot(np.log10(P),np.log10(calc_NP_law3(P)),lw=20,color='gray',alpha=0.3)#,label=r'$\alpha$: %s'%alpha)
 
     plt.plot([17,17],[-11,4],'--',lw=5,color='black',alpha=0.5)#,label='Kardashev Type I')
     plt.plot([13,13],[-11,4],lw=5,color='black',alpha=0.5)#,label='AO Planetary Radar')
+    #---------------------------
 
+    alpha = 0.7
     markersize = 20
     fontsize = 20
     ticksize = fontsize - 2
@@ -571,14 +567,17 @@ def compare_SETI_limits(EIRP,rarity,shape='o',color='k',project='This Project'):
     ''' Compare SETI project with previus surveys.
     '''
 
+    #---------------------------------------------------------------------------------
+    # plotting setup
+    plt.ion()
+    plt.figure(figsize=(15, 10))
     markersize = 20
 
-    ET_power_law()
     plt.plot([np.log10(EIRP)],[np.log10(1./rarity)],shape, color = color,markersize = markersize, label=project)
-
+    ET_power_law()
     plt.legend(numpoints=1,scatterpoints=1,fancybox=True, shadow=True)
 
-    plt.savefig('Transmitter_Rarity_FoM.png', format='png',bbox_inches='tight')
+    plt.savefig('compare_SETI_limits.png', format='png',bbox_inches='tight')
 #     plt.savefig('Transmitter_Rarity_FoM.pdf', format='pdf', dpi=300,bbox_inches='tight')
 
 
