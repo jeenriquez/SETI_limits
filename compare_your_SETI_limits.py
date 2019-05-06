@@ -21,7 +21,7 @@ dish_app_eff = 0.72  #Telescope Apperture Efficiency
 SNR_threshold =  25 #Survey threshold   [sigma above the mean]
 spectral_resolution = 3. #Spectral resolution [Hz]
 scan_obs_time = 300 # Observation time per scan [sec]
-max_distance = 50  #Maximum distance  [Ly]
+max_distance = 50  #Maximum distance  [pc]
 
 iband = 800e6  #Instantaneous Bandwidth [Hz]
 
